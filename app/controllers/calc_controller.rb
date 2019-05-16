@@ -64,5 +64,31 @@ class CalcController < ApplicationController
         
         render("results_templates/square_root.html.erb")
     end
+    
+    def pmt_form
+        render("form_templates/pmt.html.erb")
+    end
+    
+    def process_pmt_form
+        
+        @apr_input = params.fetch("user_apr").to_i
+        @years_input = params.fetch("user_years").to_i
+        @principal_input = params.fetch("user_principal").to_i
+        @monthly_payment = (@apr_input*@principal_input)/(1-((1+@apr_input)**(-@years_input*12)))
+        
+        render("results_templates/pmt.html.erb")
+    end
+    
+    def random_form
+        render("form_templates/random.html.erb")
+    end
+    
+    def process_random_form
+        
+        @user_min = params.fetch("user_min").to_f
+        @user_max = params.fetch("user_max").to_f
+        
+        render("results_templates/random.html.erb")
+    end
 
 end

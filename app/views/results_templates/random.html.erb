@@ -1,0 +1,12 @@
+<H1>Random Results</H1>
+
+<dl>
+    <dt>Minimum</dt>
+    <dd><%= @user_min %></dd>
+    <dt>Maximum</dt>
+    <dd><%= @user_max %></dd>
+    <dt>Random Number</dt>
+    <dd><%= rand(@user_min..@user_max).round(4) %></dd>
+</dl>
+
+<a href="/random/new">Pick anohter random number</a>
